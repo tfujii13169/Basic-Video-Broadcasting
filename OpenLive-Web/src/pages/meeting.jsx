@@ -51,7 +51,7 @@ const MeetingPage = () => {
   const routerCtx = useRouter()
   const stateCtx = useGlobalState()
   const mutationCtx = useGlobalMutation()
-  
+
   const localClient = useMemo(() => {
     const client = new RTCClient()
     if (!client._created) {
@@ -219,62 +219,28 @@ const MeetingPage = () => {
             ></div>
           </Tooltip>
         </div>
-        {currentStream ? (
-          <StreamPlayer
-            className={'main-stream-profile'}
-            showProfile={stateCtx.profile}
-            local={
-              config.host
-                ? currentStream &&
+        <div className="stream-container">
+          {currentStream ? (
+            <StreamPlayer
+              className={'stream-profile'}
+              showProfile={stateCtx.profile}
+              local={
+                config.host
+                  ? currentStream &&
                   localStream &&
                   currentStream.getId() === localStream.getId()
-                : false
-            }
-            stream={currentStream}
-            onDoubleClick={handleDoubleClick}
-            uid={currentStream.getId()}
-            domId={`stream-player-${currentStream.getId()}`}
-          >
-            <div className={classes.menuContainer}>
-              {config.host && (
-                <div className={classes.menu}>
-                  <Tooltip title={muteVideo ? 'mute-video' : 'unmute-video'}>
-                    <i
-                      onClick={handleClick('video')}
-                      className={clsx(
-                        classes.customBtn,
-                        muteVideo ? 'mute-video' : 'unmute-video'
-                      )}
-                    />
-                  </Tooltip>
-                  <Tooltip title={muteAudio ? 'mute-audio' : 'unmute-audio'}>
-                    <i
-                      onClick={handleClick('audio')}
-                      className={clsx(
-                        classes.customBtn,
-                        muteAudio ? 'mute-audio' : 'unmute-audio'
-                      )}
-                    />
-                  </Tooltip>
-                  <Tooltip title={stateCtx.screen ? 'stop-screen-share' : 'start-screen-share'}>
-                    <i
-                      onClick={handleClick('screen')}
-                      className={clsx(
-                        classes.customBtn,
-                        stateCtx.screen
-                          ? 'start-screen-share'
-                          : 'stop-screen-share'
-                      )}
-                    />
-                  </Tooltip>
-                  
-                  {/* <i onClick={handleClick('profile')} className={clsx(classes.customBtn, 'show-profile')}/> */}
-                </div>
-              )}
-            </div>
-          </StreamPlayer>
-        ) : null}
-        <div className="stream-container">
+                  : false
+              }
+              key={`${currentStream.getId()}`}
+              stream={currentStream}
+              uid={currentStream.getId()}
+              domId={`stream-player-${currentStream.getId()}`}
+              countProfile={stateCtx.streams.length}
+              onDoubleClick={handleDoubleClick}
+              showUid={true}
+            >
+            </StreamPlayer>
+          ) : null}
           {stateCtx.otherStreams.map((stream, index) => (
             <StreamPlayer
               className={'stream-profile'}
@@ -289,6 +255,7 @@ const MeetingPage = () => {
               isPlaying={stream.isPlaying()}
               uid={stream.getId()}
               domId={`stream-player-${stream.getId()}`}
+              countProfile={stateCtx.streams.length}
               onDoubleClick={handleDoubleClick}
               showUid={true}
             ></StreamPlayer>

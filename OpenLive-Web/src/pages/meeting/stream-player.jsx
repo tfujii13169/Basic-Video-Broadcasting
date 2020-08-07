@@ -78,7 +78,7 @@ export default function StreamPlayer (props) {
 
   return (
     <div
-      className={`stream-player ${autoplay ? 'autoplay' : ''}`}
+      className={`stream-player ${props.countProfile > 1 ? (props.countProfile > 4 ? (props.countProfile > 9 ? 'player-box-4' : 'player-box-3') : 'player-box-2') : 'player-box-1'} ${autoplay ? 'autoplay' : ''}`}
       id={domId}
       onClick={handleClick}
       onDoubleClick={handleDoubleClick}

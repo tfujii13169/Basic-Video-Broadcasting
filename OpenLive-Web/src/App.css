@@ -109,25 +109,49 @@ body {
 }
 
 .stream-container {
-  left: 30px;
-  top: 91px;
-  height: 660px;
-  width: 233px;
+  height: 100%;
+  width: 100%;
   position: absolute;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  justify-content: center;
   z-index: 2;
 }
 
 .stream-container > .stream-player {
-  max-height: 150px;
   background: rgba(216, 216, 216, 1);
-  max-width: 200px;
-  margin: 4px 0;
   position: relative;
   border-radius: 2px;
   overflow: hidden;
+}
+
+.stream-container > .player-box-1 {
+  flex: 1 calc(100% / 1);
+  max-width: calc(100% / 1);
+  max-height: calc(100% / 1);
+}
+
+.stream-container > .player-box-2 {
+  flex: 1 calc(100% / 2);
+  max-width: calc(100% / 2);
+  max-height: calc(100% / 2);
+}
+
+.stream-container > .player-box-3 {
+  flex: 1 calc(100% / 3);
+  max-width: calc(100% / 3);
+  max-height: calc(100% / 3);
+}
+
+.stream-container > .player-box-4 {
+  flex: 1 calc(100% / 4);
+  max-width: calc(100% / 4);
+  max-height: calc(100% / 4);
 }
 
 .avatar-container {
