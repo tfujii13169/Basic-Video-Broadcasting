@@ -14,17 +14,20 @@ const defaultState = {
   localStream: null,
   currentStream: null,
   otherStreams: [],
+  mainStreams: [],
+  subStreams: [],
   devicesList: [],
   // web sdk params
   config: {
     uid: 0,
     host: true,
     channelName: '',
-    token: process.env.REACT_APP_AGORA_APP_TOKEN,
+    token: '',
     resolution: '480p',
     ...readDefaultState(),
     microphoneId: '',
-    cameraId: ''
+    cameraId: '',
+    screen: localStorage.getItem('channel')
   },
   agoraClient: null,
   mode: 'live',
@@ -77,22 +80,44 @@ const reducer = (state, action) => {
       return { ...state, currentStream: newCurrentStream, otherStreams }
     }
     case 'addStream': {
-      const { streams, currentStream } = state
+      const { streams, currentStream, mainStreams, subStreams } = state
       const newStream = action.payload
+      const channel = action.channel
       let newCurrentStream = currentStream
       if (!newCurrentStream) {
         newCurrentStream = newStream
       }
-      if (streams.length === 4) return { ...state }
+      if (streams.length === 17) return { ...state }
       const newStreams = [...streams, newStream]
       const otherStreams = newStreams.filter(
         (it) => it.getId() !== newCurrentStream.getId()
       )
+      var newMainStreams = mainStreams
+      if (channel === 'Live1') {
+        newMainStreams = [...mainStreams, newStream]
+      }
+      var newSubStreams = subStreams
+      if (channel === 'Live2') {
+        newSubStreams = [...subStreams, newStream]
+      }
       return {
         ...state,
         streams: newStreams,
         currentStream: newCurrentStream,
-        otherStreams
+        otherStreams,
+        mainStreams: newMainStreams,
+        subStreams: newSubStreams
+      }
+    }
+    case 'changeStream': {
+      const { mainStreams, subStreams } = state
+      localStorage.setItem('channel', localStorage.getItem('channel') === '1' ? '0' : '1')
+      var newMainStreams = subStreams
+      var newSubStreams = mainStreams
+      return {
+        ...state,
+        mainStreams: newMainStreams,
+        subStreams: newSubStreams
       }
     }
     case 'removeStream': {

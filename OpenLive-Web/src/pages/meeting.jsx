@@ -236,7 +236,6 @@ const MeetingPage = () => {
               uid={currentStream.getId()}
               domId={`stream-player-${currentStream.getId()}`}
               countProfile={stateCtx.streams.length}
-              onDoubleClick={handleDoubleClick}
               showUid={true}
             >
             </StreamPlayer>
@@ -256,7 +255,6 @@ const MeetingPage = () => {
               uid={stream.getId()}
               domId={`stream-player-${stream.getId()}`}
               countProfile={stateCtx.streams.length}
-              onDoubleClick={handleDoubleClick}
               showUid={true}
             ></StreamPlayer>
           ))}

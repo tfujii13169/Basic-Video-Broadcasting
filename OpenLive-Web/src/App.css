@@ -108,6 +108,11 @@ body {
   flex: 1;
 }
 
+.small {
+  height: 50% !important;
+  width: 50% !important;
+}
+
 .stream-container {
   height: 100%;
   width: 100%;
@@ -562,4 +567,36 @@ body {
   display: flex;
   flex-direction: column;
   position: absolute;
+}
+
+.view-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row;
+  flex-flow: row;
+  justify-content: center;
+}
+
+.view-container > .main-view {
+  background-color: green;
+  flex: 1;
+}
+
+.view-container > .main-view > button {
+  margin: 10px;
+}
+
+.view-container > .sub-view {
+  background-color: red;
+  flex: 1;
+}
+
+.view-container > .sub-view > button {
+  margin: 10px;
 }

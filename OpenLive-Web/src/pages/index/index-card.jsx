@@ -200,6 +200,19 @@ export default function IndexCard () {
             }}
           />
         </FormControl>
+        <FormControl className={clsx(classes.input, classes.grid)}>
+          <InputLabel htmlFor="token">Pick a app token</InputLabel>
+          <Input
+            id="appToken"
+            name="appToken"
+            value={stateCtx.config.token}
+            onChange={(evt) => {
+              const PATTERN = /^[a-zA-Z0-9!#$%&()+\-:;<=.>?@[\]^_{}|~,\s]{1,64}$/
+              const value = PATTERN.test(evt.target.value)
+              mutationCtx.updateConfig({ token: evt.target.value })
+            }}
+          />
+        </FormControl>
         <FormControl className={classes.grid}>
           <Button
             onClick={handleClick}

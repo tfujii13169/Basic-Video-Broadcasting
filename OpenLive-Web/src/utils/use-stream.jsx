@@ -49,8 +49,9 @@ export default function useStream (client) {
       // client.on("stream-subscribed", mutationCtx.addStream);
       client.on('peer-leave', mutationCtx.removeStreamById)
       client.on('stream-subscribed', (evt) => {
+        console.log(client)
         client.setStreamFallbackOption(evt.stream, 2)
-        mutationCtx.addStream(evt)
+        mutationCtx.addStream(evt, client._params.channel)
       })
       client._subscribed = true
     }

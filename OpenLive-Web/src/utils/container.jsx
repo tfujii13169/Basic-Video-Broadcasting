@@ -95,9 +95,12 @@ export const ContainerProvider = ({ children }) => {
       methods.setLocalStream(stream)
       methods.setCurrentStream(stream)
     },
-    addStream (evt) {
+    addStream (evt, channel) {
       const { stream } = evt
-      dispatch({ type: 'addStream', payload: stream })
+      dispatch({ type: 'addStream', payload: stream, channel: channel })
+    },
+    changeStream () {
+      dispatch({ type: 'changeStream' })
     },
     removeStream (evt) {
       const { stream } = evt
@@ -109,7 +112,7 @@ export const ContainerProvider = ({ children }) => {
     },
     connectionStateChanged (evt) {
       methods.toastInfo(`${evt.curState}`)
-    },
+    }
     // enableBeauty(enable) {
     //   dispatch({type: 'enableBeauty', enable});
     // }
