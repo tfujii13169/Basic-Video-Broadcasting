@@ -14,8 +14,10 @@ const defaultState = {
   localStream: null,
   currentStream: null,
   otherStreams: [],
-  mainStreams: [],
-  subStreams: [],
+  live1Streams: [],
+  live2Streams: [],
+  live3Streams: [],
+  live4Streams: [],
   devicesList: [],
   // web sdk params
   config: {
@@ -80,7 +82,7 @@ const reducer = (state, action) => {
       return { ...state, currentStream: newCurrentStream, otherStreams }
     }
     case 'addStream': {
-      const { streams, currentStream, mainStreams, subStreams } = state
+      const { streams, currentStream, live1Streams, live2Streams, live3Streams, live4Streams } = state
       const newStream = action.payload
       const channel = action.channel
       let newCurrentStream = currentStream
@@ -92,32 +94,42 @@ const reducer = (state, action) => {
       const otherStreams = newStreams.filter(
         (it) => it.getId() !== newCurrentStream.getId()
       )
-      var newMainStreams = mainStreams
+      var newLive1Streams = live1Streams
       if (channel === 'Live1') {
-        newMainStreams = [...mainStreams, newStream]
+        newLive1Streams = [...live1Streams, newStream]
       }
-      var newSubStreams = subStreams
+      var newLive2Streams = live2Streams
       if (channel === 'Live2') {
-        newSubStreams = [...subStreams, newStream]
+        newLive2Streams = [...live2Streams, newStream]
+      }
+      var newLive3Streams = live3Streams
+      if (channel === 'Live3') {
+        newLive3Streams = [...live3Streams, newStream]
+      }
+      var newLive4Streams = live4Streams
+      if (channel === 'Live4') {
+        newLive4Streams = [...live4Streams, newStream]
       }
       return {
         ...state,
         streams: newStreams,
         currentStream: newCurrentStream,
         otherStreams,
-        mainStreams: newMainStreams,
-        subStreams: newSubStreams
+        live1Streams: newLive1Streams,
+        live2Streams: newLive2Streams,
+        live3Streams: newLive3Streams,
+        live4Streams: newLive4Streams
       }
     }
     case 'changeStream': {
-      const { mainStreams, subStreams } = state
+      const { live1Streams, live2Streams } = state
       localStorage.setItem('channel', localStorage.getItem('channel') === '1' ? '0' : '1')
-      var newMainStreams = subStreams
-      var newSubStreams = mainStreams
+      var newLive1Streams = live2Streams
+      var newLive2Streams = live1Streams
       return {
         ...state,
-        mainStreams: newMainStreams,
-        subStreams: newSubStreams
+        live1Streams: newLive1Streams,
+        live2Streams: newLive2Streams
       }
     }
     case 'removeStream': {

@@ -66,7 +66,7 @@ export default function MainView () {
     <div className="main-view">
       MainView
       <div className="stream-container small">
-        {stateCtx.mainStreams.map((stream, index) => (
+        {stateCtx.live1Streams.map((stream, index) => (
           <StreamPlayer
             className={'stream-profile'}
             showProfile={stateCtx.profile}
@@ -76,7 +76,7 @@ export default function MainView () {
             isPlaying={stream.isPlaying()}
             uid={stream.getId()}
             domId={`stream-player-${stream.getId()}`}
-            countProfile={stateCtx.mainStreams.length}
+            countProfile={stateCtx.live1Streams.length}
             showUid={true}
           ></StreamPlayer>
         ))}

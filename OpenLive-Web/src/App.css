@@ -128,6 +128,20 @@ body {
   z-index: 2;
 }
 
+.stream-container2 {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
 .stream-container > .stream-player {
   background: rgba(216, 216, 216, 1);
   position: relative;
@@ -138,25 +152,31 @@ body {
 .stream-container > .player-box-1 {
   flex: 1 calc(100% / 1);
   max-width: calc(100% / 1);
-  max-height: calc(100% / 1);
 }
 
 .stream-container > .player-box-2 {
   flex: 1 calc(100% / 2);
   max-width: calc(100% / 2);
-  max-height: calc(100% / 2);
 }
 
 .stream-container > .player-box-3 {
   flex: 1 calc(100% / 3);
   max-width: calc(100% / 3);
-  max-height: calc(100% / 3);
 }
 
 .stream-container > .player-box-4 {
   flex: 1 calc(100% / 4);
   max-width: calc(100% / 4);
-  max-height: calc(100% / 4);
+}
+
+.stream-container2 > .stream-player {
+  background: rgba(216, 216, 216, 1);
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+  flex: 1 calc(100% / 2);
+  max-width: calc(100% / 2);
+  max-height: calc(100% / 2);
 }
 
 .avatar-container {
@@ -377,7 +397,6 @@ body {
   cursor: pointer;
   display: flex;
   justify-content: center;
-  flex-direction: column;
   position: relative;
 }
 
@@ -467,16 +486,13 @@ body {
   max-width: 75px;
   position: absolute;
   bottom: top;
-  top: 132px;
-  left: 19px;
+  top: 80px;
 }
 
 .radio-row.host {
-  left: 22px;
 }
 
 .radio-row.audience {
-  left: 13px;
 }
 
 .error-icon {

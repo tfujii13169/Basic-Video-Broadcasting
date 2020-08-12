@@ -18,13 +18,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center'
   },
-  coverLeft: {
-    background: 'linear-gradient(to bottom, #307AFF, 50%, #46cdff)',
-    alignItems: 'center',
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column'
-  },
   coverContent: {
     display: 'flex',
     justifyContent: 'center',
@@ -38,15 +31,12 @@ const useStyles = makeStyles(theme => ({
     display: 'flex'
   },
   container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: 'center'
   },
   card: {
     display: 'flex',
-    minWidth: 700,
-    minHeight: 500,
-    maxHeight: 500,
+    minHeight: 420,
+    maxHeight: 420,
     borderRadius: '10px',
     boxShadow: '0px 6px 18px 0px rgba(0,0,0,0.2)'
   },
@@ -65,7 +55,7 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: '#307AFF'
     },
     margin: theme.spacing(1),
-    marginTop: '33px',
+    marginTop: '24px',
     backgroundColor: '#44a2fc',
     borderRadius: '30px'
   }
@@ -75,22 +65,9 @@ export default function CardPage () {
   const classes = useStyles()
 
   return (
-    <Box display="flex" alignItems="center" justifyContent="center">
+    <Box display="flex" justifyContent="center">
       <Card className={classes.card}>
         <Box display="flex" flex="1">
-          <div className={classes.coverLeft}>
-            <div className={classes.item}>
-              <div className='cover-image' />
-            </div>
-            <div className={classes.item}>
-              <div className={classes.coverContent}>
-                <Box textAlign="center" fontSize="h6.fontSize" className={classes.fontStyle}>Welcome to</Box>
-                <Box textAlign="center" fontWeight="fontWeightRegular" fontSize="h4.fontSize" className={classes.midItem}>OPEN LIVE</Box>
-                {/* <Box textAlign="center" fontWeight="fontWeightRegular" className={classes.fontStyle} style={{color: "white", fontSize: "17px"}}>Agora Web SDK: {AgoraRTC.VERSION}</Box> */}
-                <Box textAlign="center" fontWeight="fontWeightRegular" className={classes.fontStyle} fontSize="h7.fontSize">Powered by Agora.io</Box>
-              </div>
-            </div>
-          </div>
           <div className={classes.coverRight}>
             <Switch>
               <Route exact path="/" component={IndexCard}></Route>

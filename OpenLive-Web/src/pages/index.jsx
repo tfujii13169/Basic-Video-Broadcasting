@@ -8,8 +8,6 @@ const useStyles = makeStyles(() => ({
   container: {
     height: '100%',
     width: '100%',
-    minWidth: 800,
-    minHeight: 600,
     boxSizing: 'content-box',
     display: 'flex',
     justifyContent: 'center'

@@ -26,7 +26,6 @@ const CustomRadio = withStyles({
     <div className={`role-item ${props.checked ? 'active' : 'inactive'}`} onClick={(evt) => {
       props.onClick(props)
     }}>
-      <div className={`icon-${props.value}`}></div>
       <div className={`radio-row ${props.value}`}>
         <div className="custom-radio">
           <input
@@ -81,9 +80,6 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     display: 'flex',
-    minWidth: 700,
-    minHeight: 500,
-    maxHeight: 500,
     borderRadius: '10px',
     boxShadow: '0px 6px 18px 0px rgba(0,0,0,0.2)'
   },
@@ -106,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: '#82C2FF'
     },
     margin: theme.spacing(1),
-    marginTop: '33px',
+    marginTop: '24px',
     backgroundColor: '#44a2fc',
     borderRadius: '30px'
   },
@@ -148,19 +144,12 @@ export default function IndexCard () {
 
   return (
     <Box
-      marginTop="114px"
       flex="1"
       display="flex"
-      alignItems="center"
       justifyContent="flex-start"
       flexDirection="column"
     >
       <Link to="/setting" className="setting-btn" />
-      <span className="version">Web SDK Version: {AgoraRTC.VERSION}</span>
-      <a
-        href="https://github.com/AgoraIO/Basic-Video-Broadcasting/tree/master/OpenLive-Web"
-        className="github"
-      ></a>
       <div className="role-container">
         <CustomRadio
           className={classes.radio}
@@ -176,7 +165,6 @@ export default function IndexCard () {
         ></CustomRadio>
       </div>
       <Box
-        marginTop="92"
         flex="1"
         display="flex"
         alignItems="center"
